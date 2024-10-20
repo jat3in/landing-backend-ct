@@ -4,7 +4,7 @@ This is a Backend Application built with Node js.
 
 ## Deployment Api 
 ```
-https://travel-backend-nwtf.onrender.com
+https://landing-backend-1.onrender.com
 ```
 
 ## Send Mail
@@ -12,11 +12,19 @@ https://travel-backend-nwtf.onrender.com
 1. Send Email Api : POST
 
 ```
-https://travel-backend-nwtf.onrender.com/api/v1/tourist/register
+https://landing-backend-1.onrender.com/send-email
 ```
 
 2. Send Email Api : PUT
 
 ```
-https://travel-backend-nwtf.onrender.com/api/v1/tourist/register
+https://landing-backend-1.onrender.com/send-email
 ```
+
+## Required Fields
+
+1. username
+2. email
+3. phone
+4. destination
+5. date 
