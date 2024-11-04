@@ -14,7 +14,7 @@ app.use(express.json({ limit: "20kb" }));
 app.use(express.urlencoded({ extended: true, limit: "20kb" }));
 
 app.post("/send-email", (req,res) => {
-    const {username,email,date,phone,destination,mem} = req.body
+    const {name, phone, email, numberOfMembers, selectedPackage} = req.body
 
     if(!username && !email && !phone){
         return res.status(500).json({message: "All feilds are our required"})
@@ -36,8 +36,8 @@ app.post("/send-email", (req,res) => {
           <th>Value</th>
         </tr>
         <tr>
-          <td>Username</td>
-          <td>${username}</td>
+          <td>Name</td>
+          <td>${name}</td>
         </tr>
         <tr>
           <td>Email</td>
@@ -45,7 +45,7 @@ app.post("/send-email", (req,res) => {
         </tr>
         <tr>
           <td>No. Of Members</td>
-          <td>${mem}</td>
+          <td>${numberOfMembers}</td>
         </tr>
         <tr>
           <td>Phone</td>
@@ -53,14 +53,14 @@ app.post("/send-email", (req,res) => {
         </tr>
         <tr>
           <td>Destination</td>
-          <td>${destination}</td>
+          <td>${selectedPackage}</td>
         </tr>
       </table>
     `;
       const mailOptions = {
         from: 'jatinvashishtha053@gmail.com',
         to: 'jatinvashishtha053@gmail.com',
-        subject: `Contact form submission from ${username}`,
+        subject: `Contact form submission from ${name}`,
         html: emailBody,
       };
 
@@ -75,53 +75,53 @@ app.post("/send-email", (req,res) => {
 
 
 app.put("/send-email", (req,res) => {
-    const {username,email,mem,phone,destination} = req.body
+  const {name, phone, email, numberOfMembers, selectedPackage} = req.body
 
-    if(!username && !email && !phone && !destination){
-        return res.status(500).json({message: "All feilds are our required"})
-    }
+  if(!username && !email && !phone){
+      return res.status(500).json({message: "All feilds are our required"})
+  }
 
-    const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-           user: `${process.env.USER}`,
-           pass: `${process.env.AUTH}`,
-        },
-      });
+  const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: `${process.env.USER}`,
+        pass: `${process.env.AUTH}`,
+      },
+    });
 
-      const emailBody = `
-      <h2>Form Submission Details</h2>
-      <table border="1" cellpadding="10" cellspacing="0">
-        <tr>
-          <th>Field</th>
-          <th>Value</th>
-        </tr>
-        <tr>
-          <td>Username</td>
-          <td>${username}</td>
-        </tr>
-        <tr>
-          <td>Email</td>
-          <td>${email}</td>
-        </tr>
-        <tr>
-          <td>No. Of Members</td>
-          <td>${mem}</td>
-        </tr>
-        <tr>
-          <td>Phone</td>
-          <td>${phone}</td>
-        </tr>
-        <tr>
-          <td>Destination</td>
-          <td>${destination}</td>
-        </tr>
-      </table>
-    `;
+    const emailBody = `
+    <h2>Form Submission Details</h2>
+    <table border="1" cellpadding="10" cellspacing="0">
+      <tr>
+        <th>Field</th>
+        <th>Value</th>
+      </tr>
+      <tr>
+        <td>Name</td>
+        <td>${name}</td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td>${email}</td>
+      </tr>
+      <tr>
+        <td>No. Of Members</td>
+        <td>${numberOfMembers}</td>
+      </tr>
+      <tr>
+        <td>Phone</td>
+        <td>${phone}</td>
+      </tr>
+      <tr>
+        <td>Destination</td>
+        <td>${selectedPackage}</td>
+      </tr>
+    </table>
+  `;
       const mailOptions = {
         from: 'jatinvashishtha053@gmail.com',
         to: 'jatinvashishtha053@gmail.com',
-        subject: `Contact form submission from ${username}`,
+        subject: `Contact form submission from ${name}`,
         html: emailBody,
       };
 
