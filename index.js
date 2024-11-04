@@ -23,8 +23,8 @@ app.post("/send-email", (req,res) => {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: `${process.env.USER}`,
-          pass: `${process.env.AUTH}`,
+          user: "jatinvashishtha053@gmail.com",
+          pass: "zlhl hxbt gshe ekus",
         },
       });
 
@@ -84,9 +84,9 @@ app.put("/send-email", (req,res) => {
   const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: `${process.env.USER}`,
-        pass: `${process.env.AUTH}`,
-      },
+          user: "jatinvashishtha053@gmail.com",
+          pass: "zlhl hxbt gshe ekus",
+        },
     });
 
     const emailBody = `
