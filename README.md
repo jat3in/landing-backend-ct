@@ -23,8 +23,8 @@ https://landing-backend-1.onrender.com/send-email
 
 ## Required Fields
 
-1. username
+1. name
 2. email
 3. phone
 4. destination
-5. date 
+5. no. of members 

@@ -14,7 +14,7 @@ app.use(express.json({ limit: "20kb" }));
 app.use(express.urlencoded({ extended: true, limit: "20kb" }));
 
 app.post("/send-email", (req,res) => {
-    const {username,email,date,phone,destination} = req.body
+    const {username,email,date,phone,destination,mem} = req.body
 
     if(!username && !email && !phone){
         return res.status(500).json({message: "All feilds are our required"})
@@ -44,8 +44,8 @@ app.post("/send-email", (req,res) => {
           <td>${email}</td>
         </tr>
         <tr>
-          <td>Date</td>
-          <td>${date}</td>
+          <td>No. Of Members</td>
+          <td>${mem}</td>
         </tr>
         <tr>
           <td>Phone</td>
@@ -75,7 +75,7 @@ app.post("/send-email", (req,res) => {
 
 
 app.put("/send-email", (req,res) => {
-    const {username,email,date,phone,destination} = req.body
+    const {username,email,mem,phone,destination} = req.body
 
     if(!username && !email && !phone && !destination){
         return res.status(500).json({message: "All feilds are our required"})
@@ -105,8 +105,8 @@ app.put("/send-email", (req,res) => {
           <td>${email}</td>
         </tr>
         <tr>
-          <td>Date</td>
-          <td>${date}</td>
+          <td>No. Of Members</td>
+          <td>${mem}</td>
         </tr>
         <tr>
           <td>Phone</td>
